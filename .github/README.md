@@ -39,7 +39,6 @@ Castus fork of [ryancramerdesign/FileValidatorSvgSanitizer](https://github.com/r
 1. **One-time setup** in your clone:
 
    ```sh
-   git config core.autocrlf false
    git remote add upstream https://github.com/ryancramerdesign/FileValidatorSvgSanitizer.git
    ```
 
