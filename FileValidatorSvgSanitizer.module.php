@@ -71,9 +71,9 @@ class FileValidatorSvgSanitizer extends FileValidatorModule {
 	public function getSvgSanitizer() {
 		if($this->svgSanitizer !== null) return $this->svgSanitizer;
 		$ns = 'enshrined\svgSanitize';
-		$classLoader = $this->wire()->classLoader;
-		if(!$classLoader->hasNamespace($ns)) $classLoader->addNamespace($ns, __DIR__ . '/svgSanitize/');
 		$className = $ns . '\Sanitizer';
+		// Castus: the library comes from Composer (enshrined/svg-sanitize) instead of the bundled /svgSanitize/ copy
+		if(!class_exists($className)) throw new WireException('FileValidatorSvgSanitizer requires the enshrined/svg-sanitize Composer package');
 		$this->svgSanitizer = new $className();
 		$this->svgSanitizer->removeRemoteReferences((bool) $this->removeRemoteReferences);
 		$this->svgSanitizer->minify((bool) $this->minify);
